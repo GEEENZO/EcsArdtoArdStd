@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textview1"
-        android:text="StandingGitHubTEEST TXT♪"
+        android:text="StandingGitHubTEST TXT♪"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -22,10 +22,18 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_below="@+id/edittext"
-        android:text="GET-BUTTON"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edittext" />
+
+    <include
+        layout="@layout/ten_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        />
+
 
 
 </RelativeLayout>

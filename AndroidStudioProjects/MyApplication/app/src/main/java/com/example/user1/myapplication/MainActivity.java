@@ -27,23 +27,19 @@ public class MainActivity extends AppCompatActivity {
         int b = 3;
         float c =  (float) a/b;
 
-         EditText etx = (EditText)findViewById(R.id.edittext);
+        final EditText etx = (EditText)findViewById(R.id.edittext);
         etx.setText("ここでテキストをエディット！");
 
-        final String getedit = etx.getText().toString();
+        String getedit = etx.getText().toString();
         Log.e("EditOn: ",getedit);
 
         //Toast tst = (Toast)
         Button btn = (Button)findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                txv.setText(getedit);//etx.getText().toString());
+                txv.setText(etx.getText().toString());
             }
         });
-
-    	String strs = "GitUp-TEST";
-	    System.out.println(strs);
-
 
     }
 }
