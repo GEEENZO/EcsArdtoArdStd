@@ -40,5 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 txv.setText(getedit);//etx.getText().toString());
             }
         });
+
+
     }
 }
