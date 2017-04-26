@@ -40,5 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 txv.setText(getedit);//etx.getText().toString());
             }
         });
+
+	Stirng strs = "GitUp-TEST";
+	System.out.println(strs);
     }
 }
