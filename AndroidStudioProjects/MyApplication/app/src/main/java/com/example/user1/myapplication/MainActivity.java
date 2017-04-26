@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     double calc(int opt,double value1,double value2){
         switch(opt){
-
             case R.id.button_add:
                 return  value1+value2;
             case R.id.button_subtract:
@@ -31,40 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 return value1 / value2;
             default:
                 return value1;
-
         }
     }
-
-    View.OnClickListener buttonNumListener = new View.OnClickListener(){
-        public void onClick(View view){
-            Button button = (Button)view;
-            //etx.append(button.getText());
-            //etx.setText(button.getText());
-
-            if(isRememberPushed == true){
-                etx.setText(button.getText());
-            }
-            else{
-                etx.append(button.getText());
-            }
-            isRememberPushed = false;
-
-            Button pushbtn = (Button) view;
-            double value = Double.parseDouble(etx.getText().toString());
-            if(befkey == R.id.button_equal){
-                result = value;
-
-            }else{
-                result = calc(befkey,result,value);
-
-            }
-
-            befkey = pushbtn.getId();
-            txv.setText(pushbtn.getText());
-            isRememberPushed = true;
-        }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +61,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //上下のキャスト・リスナー記述方法は同じ意味を持つ
+        //上下のButtonキャスト・リスナー記述方法は同じ意味を持つ
+
+        View.OnClickListener buttonNumListener = new View.OnClickListener(){
+            public void onClick(View view){
+                Button button = (Button)view;
+                //etx.append(button.getText());
+                //etx.setText(button.getText());
+
+                if(isRememberPushed == true){
+                    etx.setText(button.getText());
+                }
+                else{
+                    etx.append(button.getText());
+                }
+                isRememberPushed = false;
+            }
+        };
 
         findViewById(R.id.button_1).setOnClickListener(buttonNumListener);
         findViewById(R.id.button_2).setOnClickListener(buttonNumListener);
@@ -114,5 +97,22 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_equal).setOnClickListener(buttonNumListener);
 
 
+        View.OnClickListener optButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button pushbtn = (Button)view;
+                double value = Double.parseDouble(etx.getText().toString());
+                if(befkey == R.id.button_equal){
+                    result = value;
+                }
+                else{
+                    result = calc(befkey,result,value);
+                }
+
+                befkey = pushbtn.getId();
+                txv.setText(pushbtn.getText());
+                isRememberPushed = true;
+            }
+        };
     }
 }
