@@ -25,7 +25,8 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edittext" />
+        android:layout_below="@+id/edittext"
+        android:text="GET-BUTTON" />
 
     <include
         layout="@layout/ten_key"
