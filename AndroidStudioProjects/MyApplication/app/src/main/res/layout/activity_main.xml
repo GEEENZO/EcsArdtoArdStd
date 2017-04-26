@@ -15,7 +15,7 @@
 
     <EditText
         android:id="@+id/edittext"
-        android:text="ここに入力！？"
+        android:text="ここに数字を入力！"
         android:layout_below="@+id/textview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edittext"
-        android:text="GET-BUTTON" />
+        android:text="BUTTON" />
 
     <include
         layout="@layout/ten_key"
