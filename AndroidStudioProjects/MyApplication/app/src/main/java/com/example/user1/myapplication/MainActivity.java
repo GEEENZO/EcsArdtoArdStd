@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-	Stirng strs = "GitUp-TEST";
-	System.out.println(strs);
+
     }
 }
