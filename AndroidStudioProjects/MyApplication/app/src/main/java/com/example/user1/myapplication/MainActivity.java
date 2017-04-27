@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_equal).setOnClickListener(optButtonListener);
     }
 
+
     
     View.OnClickListener optButtonListener = new View.OnClickListener() {
         @Override
