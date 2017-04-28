@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etx;
     Button btn;
     int befkey = R.id.button_equal;
-    double result;
+    double result = 0;
     boolean isRememberPushed;
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -31,21 +32,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         txv = (TextView)findViewById(R.id.textview1);
-        //txv.setText("=======TEXTVIEW=================");
-        String str = String.valueOf(33);
-        int i = Integer.parseInt("13");
-
-        int a = 1;
-        int b = 3;
-        float c =  (float) a/b;
-
         etx = (EditText)findViewById(R.id.edittext);
         //etx.setText("ここでテキストをエディット！");
 
         //String getedit = etx.getText().toString();
         //Log.e("EditOn: ",getedit);
 
-        //Toast tst = (Toast)
         btn = (Button)findViewById(R.id.button);
         //btn.setOnClickListener(new View.OnClickListener(){
         //    public void onClick(View view){
@@ -73,10 +65,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_subtract).setOnClickListener(optButtonListener);
         findViewById(R.id.button_add).setOnClickListener(optButtonListener);
         findViewById(R.id.button_equal).setOnClickListener(optButtonListener);
+
+        findViewById(R.id.button_clear).setOnClickListener(clearButtonListener);
+    }
+
+    private void toastset(String result){
+        Toast toast = Toast.makeText(this,result,Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 
-    
     View.OnClickListener optButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -88,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
             else{
                 result = calc(befkey,result,value);
                 etx.setText(String.valueOf(result));
+
+                toastset(String.valueOf(result));
+
+                //toast = Toast.makeText(this,"test",Toast.LENGTH_LONG).show();
             }
 
             befkey = optbtn.getId();
