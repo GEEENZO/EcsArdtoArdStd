@@ -2,6 +2,7 @@ package com.example.user1.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     int befkey = R.id.button_equal;
     double result = 0;
     boolean isRememberPushed;
+    boolean isReset = false;
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
@@ -74,20 +76,33 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
+    static boolean isNumberFormat(String str){
+        try{
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException nm){
+            return false;
+        }
+    }
 
     View.OnClickListener optButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Button optbtn = (Button)view;
-            double value = Double.parseDouble(etx.getText().toString());
-            if(befkey == R.id.button_equal){
-                result = value;
-            }
-            else{
-                result = calc(befkey,result,value);
-                etx.setText(String.valueOf(result));
 
-                toastset(String.valueOf(result));
+            if(isNumberFormat(etx.getText().toString())){
+                double value = Double.parseDouble(etx.getText().toString());
+                if(befkey == R.id.button_equal){
+                    result = value;
+                }
+                else{
+                    result = calc(befkey,result,value);
+                    etx.setText(String.valueOf(result));
+
+                    toastset(String.valueOf(result));
+                    isReset = true;
+                }
             }
 
             befkey = optbtn.getId();
@@ -103,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             befkey = R.id.button_equal;
             result = 0;
             isRememberPushed = false;
+            isReset = false;
 
             txv.setText("");
             etx.setText("");
@@ -127,7 +143,13 @@ public class MainActivity extends AppCompatActivity {
 
                 etx.append(button.getText());
             }
+
+            if(isReset){
+                txv.setText("");
+            }
+
             isRememberPushed = false;
+            isReset = false;
         }
     };
     double calc(int opt,double value1,double value2){
