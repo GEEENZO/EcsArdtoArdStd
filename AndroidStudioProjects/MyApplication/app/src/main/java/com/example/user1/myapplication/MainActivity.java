@@ -97,15 +97,20 @@ public class MainActivity extends AppCompatActivity {
                     result = value;
                 }
                 else{
-                    result = calc(befkey,result,value);
-                    etx.setText(String.valueOf(result));
+                    //オプションが＝の時だけ計算を行う
+                    if(optbtn.getId() == R.id.button_equal){
+                        //befkeyと前回入力の値と現入力値のvalueとで計算を行う
+                        result = calc(befkey,result,value);
+                        etx.setText(String.valueOf(result));
 
-                    toastset(String.valueOf(result));
-                    isReset = true;
+                        toastset(String.valueOf(result));
+                        isReset = true;
+                    }
                 }
             }
 
             befkey = optbtn.getId();
+
             //txv.setText(optbtn.getText());
             txv.append(optbtn.getText());
             isRememberPushed = true;
@@ -131,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
             //etx.append(button.getText());
             //etx.setText(button.getText());
 
+            if(isReset){
+                txv.setText("");
+            }
+
             if(isRememberPushed == true){
                 etx.setText(button.getText());
 
@@ -142,10 +151,6 @@ public class MainActivity extends AppCompatActivity {
                 txv.append(button.getText());
 
                 etx.append(button.getText());
-            }
-
-            if(isReset){
-                txv.setText("");
             }
 
             isRememberPushed = false;
@@ -165,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return value1;
         }
+        //befkey
     }
 
 }
