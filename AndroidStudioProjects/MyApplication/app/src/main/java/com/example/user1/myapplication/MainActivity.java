@@ -88,12 +88,11 @@ public class MainActivity extends AppCompatActivity {
                 etx.setText(String.valueOf(result));
 
                 toastset(String.valueOf(result));
-
-                //toast = Toast.makeText(this,"test",Toast.LENGTH_LONG).show();
             }
 
             befkey = optbtn.getId();
-            txv.setText(optbtn.getText());
+            //txv.setText(optbtn.getText());
+            txv.append(optbtn.getText());
             isRememberPushed = true;
         }
     };
@@ -118,8 +117,14 @@ public class MainActivity extends AppCompatActivity {
 
             if(isRememberPushed == true){
                 etx.setText(button.getText());
+
+                txv.append(button.getText());
             }
             else{
+                //txv.setText(button.getText());
+                //etx.setText(button.getText());
+                txv.append(button.getText());
+
                 etx.append(button.getText());
             }
             isRememberPushed = false;

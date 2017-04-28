@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textview1"
-        android:text="StandingGitHubTEST TXT♪"
+        android:text="Standing-CACULATIONsAPP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
